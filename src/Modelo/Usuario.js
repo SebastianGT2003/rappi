@@ -3,7 +3,6 @@ import axios from "axios";
 
 class usuario {
   constructor(nombre, correo, contraseña, direccion, celular) {
-    /* Todo lo que necesita un usuario */
 
     this.nombre = nombre;
     this.correo = correo;
@@ -14,8 +13,7 @@ class usuario {
   navegador = useNavigate();
 
   iniciar_sesion = (body) => {
-    axios
-      .post("http://localhost:4000/inicio_sesion", body)
+    axios.post("http://localhost:4000/inicio_sesion", body)
       .then(({ data }) => {
         console.log(data);
 

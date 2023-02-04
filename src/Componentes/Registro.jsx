@@ -1,12 +1,36 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Link,
-  useNavigate,
-} from "react-router-dom";
 
 function Registro() {
+  //Hokks
+  const [nombre, setNombre] = useState("");
+
+  const [correo, setCorreo] = useState("");
+  const [contraseña, setContraseña] = useState("");
+  const [direccion, setDireccion] = useState("");
+  const [celular, setCelular] = useState("");
+
+  const registrar_usuario = (ev) => {
+    ev.preventDefault();
+    var usuario={
+      nombre:nombre,
+      correo:correo,
+      contraseña: contraseña,
+      direccion:direccion,
+      celular:celular
+    }
+    console.log(usuario)
+
+    axios.post('/api/usuario/registrar_usuario', usuario)
+    .then(res=>{
+      alert(res.data)
+    })
+    .then(err=>{
+      console.log(err)
+    })
+  }
+
   return (
+  
     <div
       className="modal modal-signin position-static d-block py-5"
       tabindex="-1"
@@ -34,6 +58,8 @@ function Registro() {
                   className="form-control rounded-3"
                   id="floatingInput"
                   placeholder="Nombre"
+                  value={nombre}
+                  onChange={(e)=>{setNombre(e.target.value)}}
                   required
                 />
                 <label for="floatingPassword">Nombre</label>
@@ -44,6 +70,8 @@ function Registro() {
                   className="form-control rounded-3"
                   id="floatingInput"
                   placeholder="nombre@ejemplo.com"
+                  value={correo}
+                  onChange={(e)=>{setCorreo(e.target.value)}}
                   required
                 />
                 <label for="floatingInput">Correo</label>
@@ -54,6 +82,8 @@ function Registro() {
                   className="form-control rounded-3"
                   id="floatingPassword"
                   placeholder="Contraseña"
+                  value={contraseña}
+                  onChange={(e)=>{setContraseña(e.target.value)}}
                   required
                 />
                 <label for="floatingPassword">Contreseña</label>
@@ -64,6 +94,8 @@ function Registro() {
                   className="form-control rounded-3"
                   id="floatingInput"
                   placeholder="Dirección"
+                  value={direccion}
+                  onChange={(e)=>{setDireccion(e.target.value)}}
                   required
                 />
                 <label for="floatingPassword">Dirección</label>
@@ -74,13 +106,15 @@ function Registro() {
                   className="form-control rounded-3"
                   id="floatingCelular"
                   placeholder="Celular"
+                  value={celular}
+                  onChange={(e)=>{setCelular(e.target.value)}}
                   required
                 />
                 <label for="floatingPassword">Celular</label>
               </div>
               <button
                 type="submit"
-                className="btn btn-lg rounded-3 w-100 mb-2 btn-outline-danger"
+                class="btn btn-lg rounded-3 w-100 mb-2 btn-outline-danger"
               >
                 Registarme
               </button>
