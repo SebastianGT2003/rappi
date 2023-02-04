@@ -12,8 +12,7 @@ function Registro() {
   const [direccion, setDireccion] = useState("");
   const [celular, setCelular] = useState("");
 
-  const registrar_usuario = (ev) => {
-    ev.preventDefault();
+  function registrar_usuario() {
     var usuario={
       nombre:nombre,
       correo:correo,
