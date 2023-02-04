@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Link,
@@ -8,30 +8,32 @@ import axios from "axios";
 
 function InicioSesion() {
   return (
-    <div class="modal modal-signin position-static d-block py-5" tabindex="-1" role="dialog" id="modalSignin">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content rounded-4 shadow">
-      <div class="modal-header p-5 pb-4 border-bottom-0">
-        <h1 class="text-danger fw-bold mb-0 fs-2">Rappi</h1>
-      </div>
+    <div className="modal modal-signin position-static d-block py-5" tabindex="-1" role="dialog" id="modalSignin">
+      <div className="modal-dialog" role="document">
+        <div className="modal-content rounded-4 shadow">
+          <figure className="text-center my-5">
+              <h1 className="text-danger">Rappi</h1>
+          </figure>
 
-      <div class="modal-body p-5 pt-0">
-        <form class="">
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="nombre@ejemplo.com"/>
-            <label for="floatingInput">Correo</label>
+          <div className="modal-body p-5 pt-0">
+            <form className="">
+              <div className="form-floating mb-3">
+                <input type="email" className="form-control rounded-3" id="floatingInput" placeholder="nombre@ejemplo.com" />
+                <label for="floatingInput">Correo</label>
+              </div>
+              <div className="form-floating mb-3">
+                <input type="password" className="form-control rounded-3" id="floatingPassword" placeholder="Contraseña" />
+                <label for="floatingPassword">Contreseña</label>
+              </div>
+              <button className="w-100 mb-2 btn btn-lg rounded-3 btn-danger" type="submit">Inicio sesión</button>
+            </form>
+            <Link to ="registro">
+            <button type="button" className="btn btn-lg rounded-3 w-100 mb-2 btn-outline-danger">Registarme</button>
+            </Link>
           </div>
-          <div class="form-floating mb-3">
-            <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Contraseña"/>
-            <label for="floatingPassword">Contreseña</label>
-          </div>
-          <button class="w-100 mb-2 btn btn-lg rounded-3 btn-danger" type="submit">Inicio sesión</button>
-          <button type="button" class="btn btn-lg rounded-3 w-100 mb-2 btn-outline-danger">Registarme</button>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
-</div>
   );
 }
 
