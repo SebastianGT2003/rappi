@@ -36,8 +36,11 @@ function InicioSesion() {
             <label for="floatingPassword">Contreseña</label>
           </div>
           <button class="w-100 mb-2 btn btn-lg rounded-3 btn-danger" type="submit">Inicio sesión</button>
-          <button type="button" class="btn btn-lg rounded-3 w-100 mb-2 btn-outline-danger">Registarme</button>
         </form>
+        <Link to='/registro'>
+        <button type="button" class="btn btn-lg rounded-3 w-100 mb-2 btn-outline-danger">Registarme</button>
+        </Link>
+        
       </div>
     </div>
   </div>
