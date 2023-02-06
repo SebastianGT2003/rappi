@@ -1,5 +1,5 @@
-import React, {useState}from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Registro() {
@@ -11,27 +11,37 @@ function Registro() {
   const [direccion, setDireccion] = useState("");
   const [celular, setCelular] = useState("");
 
-  function registrar_usuario() {
-    var usuario={
-      nombre:nombre,
-      correo:correo,
-      contraseña: contraseña,
-      direccion:direccion,
-      celular:celular
-    }
-    console.log(usuario)
+  ////
+  const navegador = useNavigate();
 
-    axios.post('/api/usuario/registrar_usuario', usuario)
-    .then(res=>{
-      alert(res.data)
-    })
-    .then(err=>{
-      console.log(err)
-    })
+  function registrarusuario(event) {
+    event.preventDefault()
+    var usuario = {
+      nombre: nombre,
+      correo: correo,
+      contraseña: contraseña,
+      direccion: direccion,
+      celular: celular,
+    };
+    console.log(usuario);
+
+    axios.post("/api/usuario/registrar", usuario)
+      .then((res) => {
+       
+        if (res.data=== 'Usuario registrado correctamente'){
+          alert(res.data);
+          navegador('/')
+        }else if (res.data=== 'El usuario ya existe'){
+          alert(res.data);
+
+        }
+      })
+      .then((err) => {
+        console.log(err);
+      });
   }
 
   return (
-  
     <div
       className="modal modal-signin position-static d-block py-5"
       tabindex="-1"
@@ -42,17 +52,17 @@ function Registro() {
         <div className="modal-content rounded-4 shadow">
           <div className="modal-header p-5 pb-4 border-bottom-0">
             <h1 className="text-danger fw-bold mb-0 fs-2">Nuevo usuario</h1>
-            <Link to ="/">
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <Link to="/">
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </Link>
           </div>
           <div className="modal-body p-5 pt-0">
-            <form className="">
+            <form class="needs-validation"  onSubmit={registrarusuario}>
               <div className="form-floating mb-3">
                 <input
                   type="text"
@@ -60,7 +70,9 @@ function Registro() {
                   id="floatingInput"
                   placeholder="Nombre"
                   value={nombre}
-                  onChange={(e)=>{setNombre(e.target.value)}}
+                  onChange={(e) => {
+                    setNombre(e.target.value);
+                  }}
                   required
                 />
                 <label for="floatingPassword">Nombre</label>
@@ -72,7 +84,9 @@ function Registro() {
                   id="floatingInput"
                   placeholder="nombre@ejemplo.com"
                   value={correo}
-                  onChange={(e)=>{setCorreo(e.target.value)}}
+                  onChange={(e) => {
+                    setCorreo(e.target.value);
+                  }}
                   required
                 />
                 <label for="floatingInput">Correo</label>
@@ -84,7 +98,9 @@ function Registro() {
                   id="floatingPassword"
                   placeholder="Contraseña"
                   value={contraseña}
-                  onChange={(e)=>{setContraseña(e.target.value)}}
+                  onChange={(e) => {
+                    setContraseña(e.target.value);
+                  }}
                   required
                 />
                 <label for="floatingPassword">Contreseña</label>
@@ -96,7 +112,9 @@ function Registro() {
                   id="floatingInput"
                   placeholder="Dirección"
                   value={direccion}
-                  onChange={(e)=>{setDireccion(e.target.value)}}
+                  onChange={(e) => {
+                    setDireccion(e.target.value);
+                  }}
                   required
                 />
                 <label for="floatingPassword">Dirección</label>
@@ -108,15 +126,14 @@ function Registro() {
                   id="floatingCelular"
                   placeholder="Celular"
                   value={celular}
-                  onChange={(e)=>{setCelular(e.target.value)}}
+                  onChange={(e) => {
+                    setCelular(e.target.value);
+                  }}
                   required
                 />
                 <label for="floatingPassword">Celular</label>
               </div>
-              <button
-                type="submit"
-                class="btn btn-lg rounded-3 w-100 mb-2 btn-outline-danger"
-              >
+              <button type="submit" class="btn btn-lg rounded-3 w-100 mb-2 btn-outline-danger">
                 Registarme
               </button>
             </form>
