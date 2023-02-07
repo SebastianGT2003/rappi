@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, {useState}from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function InicioSesion() {
@@ -17,7 +17,7 @@ function InicioSesion() {
       contraseña: contraseña
     };
 
-    axios.post("/api/usuario/autenticacion", usuario1)
+    axios.post("/api/usuario/autenticacion", usuario)
       .then((res) => {
         alert(res.data);
         if (res.data=== 'Usuario autenticado correctamente'){
