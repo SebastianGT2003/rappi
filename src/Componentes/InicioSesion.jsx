@@ -21,7 +21,7 @@ function InicioSesion() {
       .then((res) => {
         alert(res.data);
         if (res.data === "Usuario autenticado correctamente") {
-          navegador("/registro");
+          navegador("/tienda");
         }
       })
       .then((err) => {

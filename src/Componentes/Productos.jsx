@@ -6,7 +6,7 @@ function Tienda() {
 
     const [usuarios, setUsuarios] = useState([]);
     const [tablaUsuarios, setTablaUsuarios] = useState([]);
-    const [setBusqueda] = useState("");
+    const [busqueda, setBusqueda] = useState("");
 
     const peticionGet = async () => {
         await axios.get("https://jsonplaceholder.typicode.com/users")
