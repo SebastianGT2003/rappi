@@ -8,7 +8,6 @@ function Registro() {
 
   const [correo, setCorreo] = useState("");
   const [contraseña, setContraseña] = useState("");
-  const [direccion, setDireccion] = useState("");
   const [celular, setCelular] = useState("");
 
   ////
@@ -20,7 +19,6 @@ function Registro() {
       nombre: nombre,
       correo: correo,
       contraseña: contraseña,
-      direccion: direccion,
       celular: celular,
     };
     console.log(usuario);
@@ -104,20 +102,6 @@ function Registro() {
                   required
                 />
                 <label for="floatingPassword">Contreseña</label>
-              </div>
-              <div className="form-floating mb-3">
-                <input
-                  type="text"
-                  className="form-control rounded-3"
-                  id="floatingInput"
-                  placeholder="Dirección"
-                  value={direccion}
-                  onChange={(e) => {
-                    setDireccion(e.target.value);
-                  }}
-                  required
-                />
-                <label for="floatingPassword">Dirección</label>
               </div>
               <div className="form-floating mb-3">
                 <input
