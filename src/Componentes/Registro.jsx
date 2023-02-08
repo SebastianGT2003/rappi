@@ -60,7 +60,7 @@ function Registro() {
             </Link>
           </div>
           <div className="modal-body p-5 pt-0">
-            <form class="needs-validation"  onSubmit={registrarusuario}>
+            <form className="needs-validation"  onSubmit={registrarusuario}>
               <div className="form-floating mb-3">
                 <input
                   type="text"
@@ -117,7 +117,7 @@ function Registro() {
                 />
                 <label for="floatingPassword">Celular</label>
               </div>
-              <button type="submit" class="btn btn-lg rounded-3 w-100 mb-2 btn-outline-danger">
+              <button type="submit" className="btn btn-lg rounded-3 w-100 mb-2 btn-outline-danger">
                 Registarme
               </button>
             </form>
