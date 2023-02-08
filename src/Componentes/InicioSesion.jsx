@@ -56,7 +56,7 @@ function InicioSesion() {
                   }}
                   required
                 />
-                <label for="floatingInput">Correo</label>
+                <label htmlFor="floatingInput">Correo</label>
               </div>
               <div className="form-floating mb-3">
                 <input
@@ -70,7 +70,7 @@ function InicioSesion() {
                   }}
                   required
                 />
-                <label for="floatingPassword">Contreseña</label>
+                <label htmlFor="floatingPassword">Contreseña</label>
               </div>
               <button
                 className="w-100 mb-2 btn btn-lg rounded-3 btn-danger"
