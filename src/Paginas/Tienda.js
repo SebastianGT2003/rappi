@@ -1,13 +1,32 @@
-import Navbar from "../Componentes/Navbar";
-import Productos from "../Componentes/Productos"
+import { useState } from 'react';
+import { Header } from '../Componentes/Header';
+import { ProductList } from '../Componentes/Productos';
 
-function tienda() {
-    return (
-      <div className="index">
-        <Navbar />
-        <Productos />
-      </div>
-    );
-  }
-  
-  export default tienda;
+function Tienda() {
+	const [allProducts, setAllProducts] = useState([]);
+	const [total, setTotal] = useState(0);
+	const [countProducts, setCountProducts] = useState(0);
+
+	return (
+		<>
+			<Header
+				allProducts={allProducts}
+				setAllProducts={setAllProducts}
+				total={total}
+				setTotal={setTotal}
+				countProducts={countProducts}
+				setCountProducts={setCountProducts}
+			/>
+			<ProductList
+				allProducts={allProducts}
+				setAllProducts={setAllProducts}
+				total={total}
+				setTotal={setTotal}
+				countProducts={countProducts}
+				setCountProducts={setCountProducts}
+			/>
+		</>
+	);
+}
+
+export default Tienda;
