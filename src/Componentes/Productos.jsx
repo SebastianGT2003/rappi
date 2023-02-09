@@ -1,7 +1,47 @@
-import { useContext } from "react";
-import CartContext from "../Funciones/Funciones";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function Productos() {
+
+  const [productos, setProductos] = useState([]);
+
+  const getProductos = async () => {
+
+    fetch("http://localhost:5000/productos")
+    .then((response) =>{
+      console.log(response.body)
+      return response.json();
+    })
+  }
+
+/*   useEffect(() => {
+      peticionGet();
+  }, [])
+ */
+  const ProductList = ({
+    allProducts,
+    setAllProducts,
+    countProducts,
+    setCountProducts,
+    total,
+    setTotal,
+  }) => {
+    const onAddProduct = product => {
+      if (allProducts.find(item => item.id === product.id)) {
+        const products = allProducts.map(item =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+        setTotal(total + product.price * product.quantity);
+        setCountProducts(countProducts + product.quantity);
+        return setAllProducts([...products]);
+      }
+  
+      setTotal(total + product.price * product.quantity);
+      setCountProducts(countProducts + product.quantity);
+      setAllProducts([...allProducts, product]);
+    };
 
 /*     const [busqueda, setBusqueda] = useState("");
 
@@ -21,35 +61,12 @@ function Productos() {
         });
         setUsuarios(resultadosBusqueda);
     } */
- 
-    const { addItemToCart, products } = useContext(CartContext)
-
+  };
     return (
-        <div className="my-5 mx-5">
-            <div className="input-group mb-3">
-                <input type="text" className="form-control" placeholder="Tipo de porducto" aria-label="Tipo de porducto" aria-describedby="button-addon2"/*  onChange={handleChange} */ />
-            </div>
-            <div className="">
-      {products &&
-        products.map((product, i) => (
-          <div key={i} className="">
-            <img src={product.img} alt={product.nombre} />
-            <div>
-              <p>
-                {product.nombre} - ${product.precio}
-              </p>
-            </div>
-            {!product.seleccionada ? (
-              <button onClick={() => addItemToCart(product)}>
-                Add to Cart
-              </button>
-            ) : (
-              <button>En el carrito</button>
-            )}
-          </div>
-        ))}
-    </div>
-        </div>
+      <div>
+        <p>Hola</p>
+        <button onClick={getProductos}></button>
+      </div>
     );
 }
 

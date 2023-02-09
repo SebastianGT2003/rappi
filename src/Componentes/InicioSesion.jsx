@@ -32,7 +32,7 @@ function InicioSesion() {
   return (
     <div
       className="modal modal-signin position-static d-block py-5"
-      tabindex="-1"
+      tabIndex="-1"
       role="dialog"
       id="modalSignin"
     >
